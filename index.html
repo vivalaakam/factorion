@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script>
+      function factorial(num) {
+        if (num > 0) {
+          return num * factorial(num - 1);
+        } else {
+          return 1;
+        }
+      }
+      var sum = [];
+      for (var i = 0; i < 10; i++) {
+        sum[i] = factorial(i);
+      }
+      var tmp = {sum: '', esum: '', pow: 10};
+      for (var j = 40000; j < 41000; j++) {
+        tmp.sum = j + '';
+        tmp.esum = 0;
+        for (var k = 0; k < tmp.sum.length; k++) {
+          tmp.esum += sum[ tmp.sum[k] ]
+        }
+
+        if (tmp.esum > j) {
+          j = Math.floor(j / tmp.pow) * tmp.pow + tmp.pow - 1;
+          tmp.pow = tmp.pow * 10;
+        } else {
+          tmp.pow = 10;
+        }
+        if (tmp.sum == tmp.esum) {
+          console.log(tmp.sum)
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div>TODO write content</div>
+  </body>
+</html>
